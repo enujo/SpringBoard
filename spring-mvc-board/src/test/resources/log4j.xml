@@ -11,6 +11,9 @@
 	</appender>
 	
 	<!-- Application Loggers -->
+	<logger name="com.tistory.luahius.service">
+		<level value="debug" />
+	</logger>
 	<logger name="com.tistory.luahius">
 		<level value="info" />
 	</logger>

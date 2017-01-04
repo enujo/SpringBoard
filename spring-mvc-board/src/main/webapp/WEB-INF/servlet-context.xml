@@ -22,7 +22,33 @@
 	</bean>
 	
 	<context:component-scan base-package="com.tistory.luahius" />
+
+<!--1) dataSource 객체를 생성 ? 뭔데 connection의 arrayList가 된다 하지만 우리는 mybatis가 할것 이니까 이건 mybatis가 가지면 된다 -->
 	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>	<!-- 프로퍼티란 주입, setter -->
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/jjdev"/>
+        <property name="username" value="root"/>
+        <property name="password" value="java0000"/>
+    </bean>
+
+
+    <!--2) mybatis 세션생성을 위한 팩토리 생성 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- mybatis 세션생성시 사용할 dataSource주입 참조타입이 들어오는 것 : ref-->
+        <property name="dataSource" ref="dataSource" />
+        <!-- mybatis 세션생성후 쿼리를 실행시킬때 사용할 쿼리위치(메퍼)설정 dao가 있는 곳에-->
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:com/tistory/luahius/service/BoardMapper.xml</value>
+            </list>
+        </property>
+    </bean>
+    
+     <!--3) mybatis를 사용하여 db에접속하여 쿼리를 보내는 주체인 SqlSessionTemplate빈 생성-->
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory" />	<!-- 생성자의 첫번째의 매개변수로 주입된다 -->
+    </bean>
 	
 	
 </beans>
