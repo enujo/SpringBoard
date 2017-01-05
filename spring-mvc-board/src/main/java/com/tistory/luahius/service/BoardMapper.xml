@@ -19,5 +19,23 @@
 			)
 
 	</insert>
+	<!-- 마이바티스는 입력값 두개 못받는다 모델타입을 만들던지 맵을 만들던지 해야한다 -->
+	<select id="selectBoardListPerPage" parameterType="Map"  
+			resultType="com.tistory.luahius.service.Board">
+		SELECT
+			board_no as boardNo, 
+			board_title as boardTitle, 
+			board_user as boardUser, 
+			board_date as boardDate 
+		FROM board 
+		ORDER BY board_date DESC 
+		LIMIT #{beginRow},#{pagePerRow}
+	</select>
+	
+	<select id="selectTotalBoardCount" resultType="int">
+		SELECT 
+			COUNT(*) 
+		FROM board
+	</select>
 </mapper>
 
