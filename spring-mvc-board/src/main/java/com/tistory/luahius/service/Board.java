@@ -59,8 +59,8 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [boardNo=" + boardNo + ", boardPw=" + boardPw + ", boardTitle=" + boardTitle + ", boardContent="
-				+ boardContent + ", boardUser=" + boardUser + ", boardDate=" + boardDate + "]";
+		return "Board [boardNo=" + boardNo + ",\n boardPw=" + boardPw + ",\n boardTitle=" + boardTitle + ",\n boardContent="
+				+ boardContent + ",\n boardUser=" + boardUser + ",\n boardDate=" + boardDate + "]\n\n";
 	}
 	
 }

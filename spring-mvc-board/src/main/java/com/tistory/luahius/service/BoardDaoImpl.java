@@ -29,4 +29,20 @@ public class BoardDaoImpl implements BoardDao {
 		return sqlSession.selectList(BOARD_NS+"selectBoardListPerPage", map);
 	}
 
+	@Override
+	public Board selectBoardByKey(int boardNo) {
+		return sqlSession.selectOne(BOARD_NS+"selectBoardByKey", boardNo);
+	}
+
+	@Override
+	public int deleteBoard(Board board) {
+		return sqlSession.delete(BOARD_NS+"deleteBoard", board);
+	}
+
+	@Override
+	public int updateBoard(Board board) {
+		return sqlSession.delete(BOARD_NS+"updateBoard", board);
+	}
+
+
 }

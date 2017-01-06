@@ -20,17 +20,13 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public Map<String, Object> getBoardListPerCurrentPage(int currentPage){
-		
-		
-		
 		//pagePerRow, beginRow 를 구하고 
-		 
 		int pagePerRow = 10;
 		int beginRow = (currentPage-1)*pagePerRow;
 		
 		//토탈카운트를 구하고
 		int totalRowCount = boardDao.selectTotalBoardCount();
-		//
+
 		int lastPage = totalRowCount/pagePerRow;
         if(totalRowCount%pagePerRow != 0) {
             lastPage++;
@@ -39,6 +35,7 @@ public class BoardServiceImpl implements BoardService {
         Map<String, Integer> map = new HashMap<String, Integer>();
         map.put("beginRow", beginRow);
         map.put("pagePerRow", pagePerRow);
+        
 		List<Board> list = boardDao.selectBoardListPerPage(map);
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("totalCount", totalRowCount);
@@ -46,6 +43,24 @@ public class BoardServiceImpl implements BoardService {
 		returnMap.put("list", list);
 		return returnMap;
 	}
+
+	@Override
+	public Board viewBoard(int boardNo) {
+		Board board = boardDao.selectBoardByKey(boardNo);
+		return board;
+	}
+
+	@Override
+	public int removeBoard(Board board) {
+		
+		return boardDao.deleteBoard(board);
+	}
+
+	@Override
+	public int modifyBoard(Board board) {
+		return boardDao.updateBoard(board);
+	}
+
 
 }
 

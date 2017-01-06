@@ -37,5 +37,29 @@
 			COUNT(*) 
 		FROM board
 	</select>
+	<select id="selectBoardByKey" parameterType="int" resultType="com.tistory.luahius.service.Board">
+		SELECT
+			board_no as boardNo,
+			board_title as boardTitle ,
+			board_content as boardContent,
+			board_user as boardUser,
+			board_date as boardDate
+		FROM board 
+		WHERE board_no= #{boardNo}
+	</select>
+	
+	<delete id="deleteBoard" parameterType="com.tistory.luahius.service.Board">
+		DELETE FROM board 
+		WHERE board_no= #{boardNo} 
+		AND board_pw= #{boardPw}			
+	</delete>
+	<update id="updateBoard" parameterType="com.tistory.luahius.service.Board">
+		UPDATE board 
+		SET 
+			board_title=#{boardTitle},
+			board_content=#{boardContent}
+		WHERE board_no=#{boardNo} 
+		AND board_pw=#{boardPw}
+	</update>
 </mapper>
 

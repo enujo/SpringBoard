@@ -10,4 +10,12 @@ public interface BoardDao {
 	int selectTotalBoardCount();
 	List<Board> selectBoardListPerPage(Map<String, Integer> map);
 
+	Board selectBoardByKey(int boardNo);
+
+	int deleteBoard(Board board);
+
+	int updateBoard(Board board);
+
+
+	
 }
