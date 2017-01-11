@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tistory.luahius.FileBoardMapper">
+	<insert id="fileAdd" parameterType="com.tistory.luahius.service.FileBoard">
+		INSERT INTO fileboard(
+			file_title as fileTitle,
+			file_auth as fileAuth,
+			file_name as fileName,
+			file_extention as fileExtention,
+			file_path as filePath			
+		)VALUES(
+			#{fileTitle},
+			#{fileAuth},
+			#{fileName},
+			#{fileExtention},
+			#{filePath}
+		)
+	</insert>
+	<!-- 
+	<select>
+		SELECT
+			*
+		FROM
+			fileboard
+		WHERE
+			file_no = #{fileNo}
+		
+		
+	
+	</select> -->
+
+</mapper>
