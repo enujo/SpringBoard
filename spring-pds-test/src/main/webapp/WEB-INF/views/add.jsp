@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -19,10 +20,11 @@
 			<input type="text" name="auth" id="auth"/>
 		</div>
 		<div>
-			<label for="multipartFile">FIEL:</label>
+			<label for="multipartFile">FILE:</label>
 			<input type="file" name="multipartFile" id="multipartFile"/>
 		</div>
 		<div><button>파일입력</button></div>
 	</form>
 </body>
+
 </html>

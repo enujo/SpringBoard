@@ -1,11 +1,19 @@
 package com.tistory.luahius.service;
 
 public class FileBoard {
+	private int fileNo;
 	private String title;
 	private String auth;
 	private String fileName;
 	private String extention;
 	private String filePath;
+	
+	public int getFileNo() {
+		return fileNo;
+	}
+	public void setFileNo(int fileNo) {
+		this.fileNo = fileNo;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -38,7 +46,8 @@ public class FileBoard {
 	}
 	@Override
 	public String toString() {
-		return "FileBoard [title=" + title + ", auth=" + auth + ", fileName=" + fileName + ", extention=" + extention
-				+ ", filePath=" + filePath + "]";
+		return "FileBoard [fileNo=" + fileNo + ", title=" + title + ", auth=" + auth + ", fileName=" + fileName
+				+ ", extention=" + extention + ", filePath=" + filePath + "]";
 	}
+	
 }

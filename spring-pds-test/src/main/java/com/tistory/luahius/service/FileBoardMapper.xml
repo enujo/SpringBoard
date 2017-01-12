@@ -4,30 +4,39 @@
 <mapper namespace="com.tistory.luahius.FileBoardMapper">
 	<insert id="fileAdd" parameterType="com.tistory.luahius.service.FileBoard">
 		INSERT INTO fileboard(
-			file_title as fileTitle,
-			file_auth as fileAuth,
-			file_name as fileName,
-			file_extention as fileExtention,
-			file_path as filePath			
+			file_title,
+			file_auth,
+			file_name,
+			file_extention,
+			file_path		
 		)VALUES(
-			#{fileTitle},
-			#{fileAuth},
+			#{title},
+			#{auth},
 			#{fileName},
-			#{fileExtention},
+			#{extention},
 			#{filePath}
 		)
 	</insert>
-	<!-- 
-	<select>
+
+	<!-- 마이바티스는 입력값 두개 못받는다 모델타입을 만들던지 맵을 만들던지 해야한다 -->
+	<select id="selectBoardListPerPage" parameterType="Map"  
+			resultType="com.tistory.luahius.service.FileBoard">
 		SELECT
-			*
-		FROM
-			fileboard
-		WHERE
-			file_no = #{fileNo}
-		
-		
+			file_no as fileNo,
+			file_title as title,
+			file_auth as auth,
+			file_name as fileName,
+			file_extention as extention,
+			file_path	as filePath 
+		FROM fileboard
+		ORDER BY file_no DESC 
+		LIMIT #{beginRow},#{pagePerRow}
+	</select>
 	
-	</select> -->
+	<select id="selectTotalBoardCount" resultType="int">
+		SELECT 
+			COUNT(*) 
+		FROM fileboard
+	</select>
 
 </mapper>

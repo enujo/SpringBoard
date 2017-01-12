@@ -27,7 +27,7 @@ public class FileBoardCommand {
 	}
 	@Override
 	public String toString() {
-		return "FileBoardCommand [title=" + title + ", auth=" + auth + ", multipartFile=" + multipartFile + "]";
+		return "FileBoardCommand.java [title=" + title + ", auth=" + auth + ", multipartFile=" + multipartFile + "]";
 	}
 	
 	
